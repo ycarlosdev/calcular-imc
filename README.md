@@ -90,7 +90,7 @@ El resultado se clasifica según los valores establecidos por la Organización M
 # 📂 Estructura del proyecto
 
 ```
-IMC-App/
+calcular-imc/
 
 │
 ├── app.py                 # Aplicación principal Flask
