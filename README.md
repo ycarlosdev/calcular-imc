@@ -118,13 +118,13 @@ IMC-App/
 ## 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/usuario/IMC-App.git
+git clone https://github.com/usuario/calcular-imc.git
 ```
 
 Entrar al directorio:
 
 ```bash
-cd IMC-App
+cd calcular-imc
 ```
 
 ---
