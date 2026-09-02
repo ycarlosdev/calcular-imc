@@ -1,0 +1,559 @@
+/*-----------ESTILOS GENERALES-----------*/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100dvh;
+    width: 100dvw;
+    background-color: var(--color-fondo);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/*-----------Paleta de colores a usar en la pagina-----------*/
+
+@property --color-principal {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #16A34A;
+}
+
+@property --color-secundario {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #2563EB;
+}
+
+@property --color-fondo {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #F8FAFC;
+}
+
+
+@property --color-formulario {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #FFFFFF;
+}
+
+@property --color-texto-principal {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #1E293B;
+}
+
+@property --color-texto-secundario {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #64748B;
+}
+
+@property --color-border {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #CBD5E1;
+}
+
+/*-----------Paleta de Colores para resultados del IMC-----------*/
+@property --color-bajo-peso {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #38BDF8;
+}
+
+@property --color-normopeso {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #22C55E;
+}
+
+@property --color-sobre-peso {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #EAB308;
+}
+
+@property --color-obeso {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #EF4444;
+}
+
+
+/*-----------HEADER----------*/
+.header {
+    display: flex;
+    min-width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    padding-right: 25px;
+    background-color: var(--color-secundario);
+    min-height: 70px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.header__lista {
+    display: flex;
+    gap: 28px;
+    padding: 5px;
+}
+
+.header__item {
+    list-style: none;
+}
+
+.header__link {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 8px 4px;
+    border-bottom: 2px solid transparent;
+}
+
+.header__link:hover {
+    border-bottom: 2px solid #fff;
+    transform: translateY(-2px);
+}
+
+.link-imc {
+    letter-spacing: 2px;
+}
+
+
+/*-----------MAIN-----------*/
+.main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.main__wraper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.main__titulo {
+    font-size: 2rem;
+    color: var(--color-texto-principal);
+    margin: 0 0 10px 0;
+    font-weight: 700;
+}
+
+.main__descripcion {
+    color: var(--color-texto-secundario);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* ESTILOS DEL FORMULARIO */
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.formulario__grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.formulario__label {
+    font-weight: 600;
+    color: var(--color-texto-principal);
+    font-size: 1rem;
+}
+
+.formulario__input-contenedor {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.formulario__input,
+.formulario__select {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid var(--color-border);
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: var(--color-formulario);
+    color: var(--color-texto-principal);
+    transition: all 0.3s ease;
+}
+
+.formulario__input:focus,
+.formulario__select:focus {
+    outline: none;
+    border-color: var(--color-secundario);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.formulario__input::placeholder {
+    color: var(--color-texto-secundario);
+}
+
+.formulario__unidad-select {
+    padding: 10px 8px;
+    border: 2px solid var(--color-border);
+    border-radius: 6px;
+    background-color: #f1f5f9;
+    color: var(--color-texto-principal);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath fill='%231E293B' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 6px center;
+    padding-right: 22px;
+}
+
+.formulario__unidad-select:hover,
+.formulario__unidad-select:focus {
+    outline: none;
+    border-color: var(--color-secundario);
+    background-color: #fff;
+}
+
+.formulario__select {
+    padding: 12px 15px;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%231E293B' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 35px;
+    appearance: none;
+}
+
+.formulario__boton {
+    padding: 14px 30px;
+    background-color: var(--color-principal);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.formulario__boton:hover {
+    background-color: #15803d;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(22, 163, 74, 0.3);
+}
+
+.formulario__boton:active {
+    transform: translateY(0);
+}
+
+/* ESTILOS DEL INFORME */
+.informe__contenedor {
+    background-color: var(--color-formulario);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    height: fit-content;
+    top: 50px;
+    position: sticky;
+    top: 100px;
+}
+
+.informe__titulo {
+    font-size: 1.5rem;
+    color: var(--color-texto-principal);
+    margin: 0;
+    text-align: center;
+}
+
+.informe__resultado {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(22, 163, 74, 0.05));
+    border-radius: 12px;
+    border: 2px solid var(--color-border);
+}
+
+.informe__numero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.informe__valor {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--color-secundario);
+}
+
+.informe__etiqueta {
+    font-size: 1rem;
+    color: var(--color-texto-secundario);
+}
+
+.informe__clasificacion {
+    text-align: center;
+    padding: 15px;
+    background-color: #f8fafc;
+    border-radius: 8px;
+}
+
+.informe__estado {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--color-texto-principal);
+    font-weight: 500;
+}
+
+.informe__rango {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.informe__subtitulo {
+    font-size: 1.1rem;
+    color: var(--color-texto-principal);
+    margin: 0 0 10px 0;
+}
+
+.informe__item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    background-color: #f8fafc;
+    border-radius: 8px;
+    border-left: 4px solid transparent;
+}
+
+.informe__color {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.informe__detalle {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    text-align: left;
+}
+
+.informe__detalle strong {
+    color: var(--color-texto-principal);
+    font-size: 0.95rem;
+}
+
+.informe__detalle span {
+    color: var(--color-texto-secundario);
+    font-size: 0.85rem;
+}
+
+/*-----------FOOTER-----------*/
+.footer {
+    background-color: #000;
+    color: #fff;
+    padding: 60px;
+    text-align: center;
+}
+
+/*-----------MEDIA QUERIES-----------*/
+
+/* Ocultar el checkbox */
+.header__menu-toggle {
+    display: none;
+}
+
+/* Ocultar el botón hamburguesa en pantallas grandes */
+.header__menu-hamburguesa {
+    display: none;
+}
+
+/* Tablets y dispositivos medianos */
+@media (max-width: 768px) {
+    .main {
+        padding: 30px 15px;
+    }
+
+    .main__wraper {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .main__titulo {
+        font-size: 1.5rem;
+    }
+
+    .informe__contenedor {
+        position: sticky;
+        top: 100px;
+    }
+
+    .header {
+        position: relative;
+    }
+
+    .header__contenedor-navegacion {
+        display: none;
+    }
+
+    .header__menu-hamburguesa {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 6px;
+        z-index: 1000;
+    }
+
+    .header__menu-hamburguesa span {
+        width: 25px;
+        height: 3px;
+        background-color: #fff;
+        border-radius: 3px;
+        transition: all 0.3s ease;
+    }
+
+    /* Cuando el checkbox está marcado, mostrar la navegación */
+    .header__menu-toggle:checked ~ .header__contenedor-navegacion {
+        display: block;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        background-color: var(--color-secundario);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 999;
+    }
+
+    /* Animar el hamburguesa cuando está marcado */
+    .header__menu-toggle:checked ~ .header__menu-hamburguesa span:nth-child(1) {
+        transform: rotate(45deg) translate(10px, 10px);
+    }
+
+    .header__menu-toggle:checked ~ .header__menu-hamburguesa span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .header__menu-toggle:checked ~ .header__menu-hamburguesa span:nth-child(3) {
+        transform: rotate(-45deg) translate(8px, -8px);
+    }
+
+    .header__nav {
+        padding: 20px;
+    }
+
+    .header__lista {
+        flex-direction: column;
+        gap: 15px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .header__link {
+        display: block;
+        text-align: left;
+    }
+
+    .link-imc {
+        letter-spacing: 1px;
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+    .main {
+        padding: 20px 12px;
+    }
+
+    .main__wraper {
+        gap: 20px;
+    }
+
+    .main__titulo {
+        font-size: 1.3rem;
+    }
+
+    .main__descripcion {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+
+    .formulario {
+        gap: 20px;
+    }
+
+    .formulario__input-contenedor {
+        flex-wrap: wrap;
+    }
+
+    .formulario__input,
+    .formulario__select {
+        font-size: 16px;
+    }
+
+    .formulario__boton {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+
+    .informe__contenedor {
+        padding: 20px;
+    }
+
+    .informe__titulo {
+        font-size: 1.2rem;
+    }
+
+    .informe__valor {
+        font-size: 2.5rem;
+    }
+
+    .informe__resultado {
+        padding: 25px 15px;
+    }
+
+    .header {
+        padding: 12px;
+    }
+
+    .header__menu-toggle:checked ~ .header__contenedor-navegacion {
+        top: 60px;
+    }
+
+    .header__menu-hamburguesa span {
+        width: 22px;
+        height: 2.5px;
+    }
+
+    .header__lista {
+        gap: 12px;
+        flex-wrap: nowrap;
+    }
+
+    .header__link {
+        font-size: 0.9rem;
+        padding: 6px 3px;
+    }
+}

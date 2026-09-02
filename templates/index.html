@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMC</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header__contenedor-img">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+        </div>
+
+        <!-- Checkbox oculto para el menú hamburguesa -->
+        <input type="checkbox" id="menu-toggle" class="header__menu-toggle">
+        
+        <!-- Label que actúa como botón hamburguesa -->
+        <label for="menu-toggle" class="header__menu-hamburguesa">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <div class="header__contenedor-navegacion">
+            <nav class="header__nav">
+                <ul class="header__lista">
+                    <li class="header__item"><a href="#" class="header__link link-imc">IMC</a></li>
+                    <li class="header__item"><a href="#" class="header__link">Apoyanos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+     <main class="main">
+        <div class="main__wraper">
+            
+            <!-- SECCION CALCULADORA -->
+            <div class="main__calculadora">
+                <h1 class="main__titulo">Calcular IMC</h1>
+                <p class="main__descripcion">Ingresa tu peso y talla para calcular tu Índice de Masa Corporal</p>
+                
+                <form class="formulario" id="formulario-imc">
+                    <!-- Campo Peso -->
+                    <div class="formulario__grupo">
+                        <label for="peso" class="formulario__label">Peso</label>
+                        <div class="formulario__input-contenedor">
+                            <input 
+                                type="number" 
+                                id="peso" 
+                                name="peso"
+                                placeholder="70"
+                                class="formulario__input"
+                                min="1"
+                                step="0.1"
+                                required>
+                            <select id="unidad-peso" name="unidad-peso" class="formulario__unidad-select">
+                                <option value="kg">kg</option>
+                                <option value="lb">lb</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Campo Talla -->
+                    <div class="formulario__grupo">
+                        <label for="talla" class="formulario__label">Talla</label>
+                        <div class="formulario__input-contenedor">
+                            <input 
+                                type="number" 
+                                id="talla" 
+                                name="talla"
+                                placeholder="175"
+                                class="formulario__input"
+                                min="1"
+                                step="0.1"
+                                required>
+                            <select id="unidad-talla" name="unidad-talla" class="formulario__unidad-select">
+                                <option value="cm">cm</option>
+                                <option value="m">m</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Botón Calcular -->
+                    <button type="submit" class="formulario__boton">Calcular IMC</button>
+                </form>
+            </div>
+
+            <!-- SECCION INFORME -->
+            <div class="main__informe">
+                <div class="informe__contenedor">
+                    <h2 class="informe__titulo">Resultado de tu IMC</h2>
+                    
+                    <div class="informe__resultado">
+                        <div class="informe__numero">
+                            <span class="informe__valor">--</span>
+                            <span class="informe__etiqueta">kg/m²</span>
+                        </div>
+                    </div>
+
+                    <div class="informe__clasificacion">
+                        <p class="informe__estado">Ingresa tus datos para calcular</p>
+                    </div>
+
+                    <div class="informe__rango">
+                        <h3 class="informe__subtitulo">Rangos de IMC</h3>
+                        <div class="informe__item">
+                            <span class="informe__color" style="background-color: var(--color-bajo-peso);"></span>
+                            <div class="informe__detalle">
+                                <strong>Bajo peso</strong>
+                                <span>IMC &lt; 18.5</span>
+                            </div>
+                        </div>
+                        <div class="informe__item">
+                            <span class="informe__color" style="background-color: var(--color-normopeso);"></span>
+                            <div class="informe__detalle">
+                                <strong>Peso normal</strong>
+                                <span>IMC 18.5 - 24.9</span>
+                            </div>
+                        </div>
+                        <div class="informe__item">
+                            <span class="informe__color" style="background-color: var(--color-sobre-peso);"></span>
+                            <div class="informe__detalle">
+                                <strong>Sobrepeso</strong>
+                                <span>IMC 25 - 29.9</span>
+                            </div>
+                        </div>
+                        <div class="informe__item">
+                            <span class="informe__color" style="background-color: var(--color-obeso);"></span>
+                            <div class="informe__detalle">
+                                <strong>Obeso</strong>
+                                <span>IMC ≥ 30</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+     </main>
+
+    <!-- FOOTER -->
+     <footer class="footer">
+        <strong>Esperanza </strong><span>Copyright-2026</span>
+     </footer>
+</body>
+</html>
