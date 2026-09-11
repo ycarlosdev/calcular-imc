@@ -13,6 +13,11 @@ body {
     flex-direction: column;
 }
 
+/* Contenedor principal que crece para empujar el footer al final */
+.main-content {
+    flex: 1;
+}
+
 /*-----------Paleta de colores a usar en la pagina-----------*/
 
 @property --color-principal {
@@ -99,12 +104,18 @@ body {
 
 .header__lista {
     display: flex;
-    gap: 28px;
+    gap: 10px;
     padding: 5px;
 }
 
 .header__item {
     list-style: none;
+}
+
+.header__logo {
+    max-width: 100%;
+    width: 150px;
+    border-radius: 45px;
 }
 
 .header__link {
@@ -311,12 +322,6 @@ body {
     color: var(--color-texto-secundario);
 }
 
-.informe__clasificacion {
-    text-align: center;
-    padding: 15px;
-    background-color: #f8fafc;
-    border-radius: 8px;
-}
 
 .informe__estado {
     margin: 0;
@@ -556,4 +561,10 @@ body {
         font-size: 0.9rem;
         padding: 6px 3px;
     }
+}
+
+
+/*----------Pagina apoyanos---------*/
+.contenedor__apoyanos {
+    min-height: 100dvh;
 }
