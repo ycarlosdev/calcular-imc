@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for("static", filename="styles-forms.css") }}">
+{% endblock %}
+
+{% block content %}
+
+<form action="" method="post" class="form">
+    {{ form.hidden_tag() }}
+
+    <!-- Email from user -->
+    <div class="form__contain-email">
+        {{ form.email.label(class_="email_user-label") }}
+        {{ form.email(class_="email_user-input") }}
+    </div>
+
+    <!-- Password from user -->
+    <div class="form__contain-password">
+        {{ form.password.label(class_="password_user-label") }}
+        {{ form.password(class_="password_user-input") }}
+    </div>
+
+    <!-- Button -->
+    <div class="form__contenedor-button">
+        {{ form.remember_me(class_="remember_me") }}
+    </div>
+
+    <!-- Button -->
+    <div class="form__contenedor-button">
+        {{ form.submit(class_="button") }}
+    </div>
+
+    <div class="form_register-user-contain">
+        </span>¿No tienes cuenta?</span>
+        <a href="{{ url_for('register') }}">Registrate</a>
+    </div>
+
+</form>
+
+{% endblock %}
