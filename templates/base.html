@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMC</title>
+    <link rel="stylesheet" href="{{ url_for("static", filename="styles.css") }}">
+
+    {% block style %}{% endblock %}
+    
+</head>
+<body>
+     <!-- HEADER -->
+    <header class="header">
+        <div class="header__contenedor-img">
+            <img src="/static/assets/logo-color.jpeg" alt="Logo" class="header__logo">
+        </div>
+
+        <!-- Checkbox oculto para el menú hamburguesa -->
+        <input type="checkbox" id="menu-toggle" class="header__menu-toggle">
+        
+        <!-- Label que actúa como botón hamburguesa -->
+        <label for="menu-toggle" class="header__menu-hamburguesa">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <div class="header__contenedor-navegacion">
+            <nav class="header__nav">
+                <ul class="header__lista">
+                    {% if current_user.is_anonymous %}
+                    <li class="header__item"><a href="{{ url_for('login') }}" class="header__link">Login</a></li>
+                    {% else %}
+                    <li class="header__item"><a href="{{ url_for('logout') }}" class="header__link">Logout</a></li>
+                    {% endif %}
+
+                    <li class="header__item"><a href="{{ url_for('home') }}" class="header__link link-imc">IMC</a></li>
+                    <li class="header__item"><a href="{{ url_for('apoyanos') }}" class="header__link">Apoyanos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- FOOTER -->
+     <footer class="footer">
+        <strong>Esperanza </strong><span>Copyright-2026</span>
+     </footer>
+
+</body>
+</html>
