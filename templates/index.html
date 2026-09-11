@@ -1,48 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IMC</title>
-    <link rel="stylesheet" href="{{ url_for("static", filename="styles.css") }}">
-</head>
-<body>
-    <!-- HEADER -->
-    <header class="header">
-        <div class="header__contenedor-img">
-            <img src="logo.png" alt="Logo">
-        </div>
+{% extends  "base.html" %}
 
-        <!-- Checkbox oculto para el menú hamburguesa -->
-        <input type="checkbox" id="menu-toggle" class="header__menu-toggle">
-        
-        <!-- Label que actúa como botón hamburguesa -->
-        <label for="menu-toggle" class="header__menu-hamburguesa">
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
 
-        <div class="header__contenedor-navegacion">
-            <nav class="header__nav">
-                <ul class="header__lista">
-                    <li class="header__item"><a href="#" class="header__link link-imc">IMC</a></li>
-                    <li class="header__item"><a href="#" class="header__link">Apoyanos</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+{% block content %}
 
     <!-- MAIN -->
      <main class="main">
         <div class="main__wraper">
             
             <!-- SECCION CALCULADORA -->
-            <div class="main__calculadora">
+            <div class="main__calculadora" id="calcular-imc">
                 <h1 class="main__titulo">Calcular IMC</h1>
                 <p class="main__descripcion">Ingresa tu peso y talla para calcular tu Índice de Masa Corporal</p>
                 
-                <form class="formulario" id="formulario-imc">
+                <form method='POST' class="formulario" id="formulario-imc">
                     {{ form.hidden_tag() }}
                     <!-- Campo Peso -->
                     <div class="formulario__grupo">
@@ -62,8 +32,8 @@
                         <div class="formulario__input-contenedor">
                             {{ form.talla(class_="formulario__input", placeholder="1.75", min="0.1", step="0.01", required=True) }}
                             <select id="unidad-talla" name="unidad-talla" class="formulario__unidad-select">
-                                <option value="cm">cm</option>
                                 <option value="m">m</option>
+                                <option value="cm">cm</option>
                             </select>
                         </div>
                     </div>
@@ -80,14 +50,15 @@
                     
                     <div class="informe__resultado">
                         <div class="informe__numero">
+                            {% if imc %}
+                            <span class="informe__valor"> {{ imc }}</span>
+                            {% else %}
                             <span class="informe__valor">--</span>
+                            {% endif %}
                             <span class="informe__etiqueta">kg/m²</span>
                         </div>
                     </div>
 
-                    <div class="informe__clasificacion">
-                        <p class="informe__estado">Ingresa tus datos para calcular</p>
-                    </div>
 
                     <div class="informe__rango">
                         <h3 class="informe__subtitulo">Rangos de IMC</h3>
@@ -126,9 +97,4 @@
         </div>
      </main>
 
-    <!-- FOOTER -->
-     <footer class="footer">
-        <strong>Esperanza </strong><span>Copyright-2026</span>
-     </footer>
-</body>
-</html>
+{% endblock %}
